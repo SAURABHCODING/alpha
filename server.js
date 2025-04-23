@@ -7,7 +7,7 @@ const { exec } = require("child_process");
 const fs = require("fs");
 const path = require("path");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080; // ✅ Updated for Railway
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -68,7 +68,6 @@ app.post("/run", async (req, res) => {
     results.push(result);
   }
 
-  // Clean up files
   fs.unlinkSync(filepath);
   if (language === "cpp") fs.unlinkSync(`${filepath}.out`);
   if (language === "java") {
