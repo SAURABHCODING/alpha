@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+echo "🔧 Starting Resque in background..."
+bundle exec rake resque:work QUEUE='*' &
+
+echo "🚀 Starting Rails server..."
+bundle exec rails s -p 2358 -b 0.0.0.0
